@@ -1,0 +1,61 @@
+package tree;
+
+
+
+//non-recursive java program for inorder traversal 
+import java.util.Stack; 
+
+/* Class containing left and right child of 
+current Node11 and key value*/
+class Node11 
+{ 
+	int data; 
+	Node11 left, right; 
+
+	public Node11(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+
+/* Class to print the inorder traversal */
+class TreeDemo2 
+{ 
+	Node11 root; 
+	void inorder() 
+	{ 
+		if (root == null) 
+			return; 
+Stack<Node11> stack =new Stack<Node11>();
+Node11 curr=root;
+while(curr!=null && stack.size()>0)
+{
+	while(curr!=null)
+	{
+		stack.push(curr);
+		curr=curr.left;
+		
+	}
+	stack.pop();
+	System.out.println(curr.data+"");
+ curr	=curr.right;
+	}
+
+		
+	} 
+
+	public static void main(String args[]) 
+	{ 
+
+		/* creating a binary tree and entering 
+		the Node11s */
+		TreeDemo2 tree = new TreeDemo2(); 
+		tree.root = new Node11(1); 
+		tree.root.left = new Node11(2); 
+		tree.root.right = new Node11(3); 
+		tree.root.left.left = new Node11(4); 
+		tree.root.left.right = new Node11(5); 
+		tree.inorder(); 
+	} 
+} 
