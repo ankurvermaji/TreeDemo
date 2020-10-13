@@ -1,0 +1,60 @@
+package tree;
+
+
+//
+
+//A binary tree Node17 
+class Node17 
+{ 
+	int data; 
+	Node17 left, right; 
+
+	Node17(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+
+class TreeDemo7 
+{ 
+	Node17 root; 
+
+	/* Compute the "maxDepth" of a tree -- the number of 
+	Node17s along the longest path from the root Node17 
+	down to the farthest leaf Node17.*/
+	int maxDepth(Node17 Node17) 
+	{ 
+		if (Node17 == null) 
+			return 0; 
+		else
+		{ 
+			/* compute the depth of each subtree */
+			int lDepth = maxDepth(Node17.left); 
+			int rDepth = maxDepth(Node17.right); 
+
+			/* use the larger one */
+			if (lDepth > rDepth) 
+				return (lDepth + 1); 
+			else
+				return (rDepth + 1); 
+		} 
+	} 
+	
+	/* Driver program to test above functions */
+	public static void main(String[] args) 
+	{ 
+		TreeDemo7 tree = new TreeDemo7(); 
+
+		tree.root = new Node17(1); 
+		tree.root.left = new Node17(2); 
+		tree.root.right = new Node17(3); 
+		tree.root.left.left = new Node17(4); 
+		tree.root.left.right = new Node17(5); 
+		tree.root.left.left.left = new Node17(6); 
+		System.out.println("Height of tree is : " + 
+									tree.maxDepth(tree.root)); 
+	} 
+} 
+
+//This code has been contributed by Mayank Jaiswal(mayank_24) 
