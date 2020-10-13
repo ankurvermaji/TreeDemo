@@ -1,0 +1,86 @@
+package tree;
+
+
+//Recursive Java program for level order traversal of Binary Tree 
+
+/* Class containing left and right child of current 
+Node16 and key value*/
+class Node16 
+{ 
+	int data; 
+	Node16 left, right; 
+	public Node16(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+
+class TreeDemo6 
+{ 
+	// Root of the Binary Tree 
+	Node16 root; 
+
+	public TreeDemo6() 
+	{ 
+		root = null; 
+	} 
+
+	/* function to print level order traversal of tree*/
+	void printLevelOrder() 
+	{ 
+		int h = height(root); 
+		int i; 
+		for (i=1; i<=h; i++) 
+			printGivenLevel(root, i); 
+	} 
+
+	/* Compute the "height" of a tree -- the number of 
+	Node16s along the longest path from the root Node16 
+	down to the farthest leaf Node16.*/
+	int height(Node16 root) 
+	{ 
+		if (root == null) 
+		return 0; 
+		else
+		{ 
+			/* compute height of each subtree */
+			int lheight = height(root.left); 
+			int rheight = height(root.right); 
+			
+			/* use the larger one */
+			if (lheight > rheight) 
+				return(lheight+1); 
+			else return(rheight+1); 
+		} 
+	} 
+
+	/* Print Node16s at the given level */
+	void printGivenLevel (Node16 root ,int level) 
+	{ 
+		if (root == null) 
+			return; 
+		if (level == 1) 
+			System.out.print(root.data + " "); 
+		else if (level > 1) 
+		{ 
+			printGivenLevel(root.left, level-1); 
+			printGivenLevel(root.right, level-1); 
+		} 
+	} 
+	
+	/* Driver program to test above functions */
+	public static void main(String args[]) 
+	{ 
+	TreeDemo6 tree = new TreeDemo6(); 
+	tree.root= new Node16(1); 
+	tree.root.left= new Node16(2); 
+	tree.root.right= new Node16(3); 
+	tree.root.left.left= new Node16(4); 
+	tree.root.left.right= new Node16(5); 
+		
+	System.out.println("Level order traversal of binary tree is "); 
+	tree.printLevelOrder(); 
+	} 
+} 
+
