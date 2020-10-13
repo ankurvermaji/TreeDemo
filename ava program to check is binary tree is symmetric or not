@@ -1,0 +1,71 @@
+package tree;
+
+
+//Java program to check is binary tree is symmetric or not 
+class Node15 
+{ 
+	int key; 
+	Node15 left, right; 
+
+	Node15(int item) 
+	{ 
+		key = item; 
+		left = right = null; 
+	} 
+} 
+
+class TreeDemo5 
+{ 
+	Node15 root; 
+
+	// returns true if trees with roots as root1 and root2 are mirror 
+	boolean isMirror(Node15 Node151, Node15 Node152) 
+	{ 
+		// if both trees are empty, then they are mirror image 
+		if (Node151 == null && Node152 == null) 
+			return true; 
+
+		// For two trees to be mirror images, the following three 
+		// conditions must be true 
+		// 1 - Their root Node15's key must be same 
+		// 2 - left subtree of left tree and right subtree 
+		//	 of right tree have to be mirror images 
+		// 3 - right subtree of left tree and left subtree 
+		//	 of right tree have to be mirror images 
+		if (Node151 != null && Node152 != null && Node151.key == Node152.key) 
+			return (isMirror(Node151.left, Node152.right) 
+					&& isMirror(Node151.right, Node152.left)); 
+
+		// if neither of the above conditions is true then 
+		// root1 and root2 are mirror images 
+		return false; 
+	} 
+
+	// returns true if the tree is symmetric i.e 
+	// mirror image of itself 
+	boolean isSymmetric(Node15 Node15) 
+	{ 
+		// check if tree is mirror of itself 
+		return isMirror(root, root); 
+	} 
+
+	// Driver program 
+	public static void main(String args[]) 
+	{ 
+		TreeDemo5 tree = new TreeDemo5(); 
+		tree.root = new Node15(1); 
+		tree.root.left = new Node15(2); 
+		tree.root.right = new Node15(2); 
+		tree.root.left.left = new Node15(3); 
+		tree.root.left.right = new Node15(4); 
+		tree.root.right.left = new Node15(4); 
+		tree.root.right.right = new Node15(3); 
+		boolean output = tree.isSymmetric(tree.root); 
+		if (output == true) 
+			System.out.println("1"); 
+		else
+			System.out.println("0"); 
+	} 
+} 
+
+//This code has been contributed by Mayank Jaiswal 
