@@ -1,0 +1,78 @@
+package tree;
+
+
+//Java program to implement iterative preorder traversal 
+import java.util.Stack; 
+
+//A binary tree Node12 
+class Node12 { 
+
+	int data; 
+	Node12 left, right; 
+
+	Node12(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+
+class TreeDemo3 { 
+
+	Node12 root; 
+
+	void iterativePreorder() 
+	{ 
+		iterativePreorder(root); 
+	} 
+
+	// An iterative process to print preorder traversal of Binary tree 
+	void iterativePreorder(Node12 Node12) 
+	{ 
+
+		// Base Case 
+		if (Node12 == null) { 
+			return; 
+		} 
+
+		// Create an empty stack and push root to it 
+		Stack<Node12> Node12Stack = new Stack<Node12>(); 
+		Node12Stack.push(root); 
+
+		/* Pop all items one by one. Do following for every popped item 
+		a) print it 
+		b) push its right child 
+		c) push its left child 
+		Note that right child is pushed first so that left is processed first */
+		while (Node12Stack.empty() == false) { 
+
+			// Pop the top item from stack and print it 
+			Node12 myNode12 = Node12Stack.peek(); 
+			System.out.print(myNode12.data + " "); 
+			Node12Stack.pop(); 
+
+			// Push right and left children of the popped Node12 to stack 
+			if (myNode12.right != null) { 
+				Node12Stack.push(myNode12.right); 
+			} 
+			if (myNode12.left != null) { 
+				Node12Stack.push(myNode12.left); 
+			} 
+		} 
+	} 
+
+	// driver program to test above functions 
+	public static void main(String args[]) 
+	{ 
+		TreeDemo3 tree = new TreeDemo3(); 
+		tree.root = new Node12(10); 
+		tree.root.left = new Node12(8); 
+		tree.root.right = new Node12(2); 
+		tree.root.left.left = new Node12(3); 
+		tree.root.left.right = new Node12(5); 
+		tree.root.right.left = new Node12(2); 
+		tree.iterativePreorder(); 
+	} 
+} 
+
+//This code has been contributed by Mayank Jaiswal 
