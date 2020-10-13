@@ -1,0 +1,69 @@
+package tree;
+
+
+//Java program to print to print root to leaf path sum equal to 
+//a given number 
+
+/* A binary tree Node20 has data, pointer to left child 
+and a pointer to right child */
+class Node20 
+{ 
+	int data; 
+	Node20 left, right; 
+
+	Node20(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+
+class TreeDemo20 { 
+
+	Node20 root; 
+	
+	/* 
+	Given a tree and a sum, return true if there is a path from the root 
+	down to a leaf, such that adding up all the values along the path 
+	equals the given sum. 
+	
+	Strategy: subtract the Node20 value from the sum when recurring down, 
+	and check to see if the sum is 0 when you run out of tree. 
+	*/
+
+	boolean hasPathSum(Node20 Node20, int sum) 
+	{ 
+		if (Node20 == null) 
+			return sum == 0; 
+		return hasPathSum(Node20.left, sum - Node20.data) || 
+			hasPathSum(Node20.right, sum - Node20.data); 
+	} 
+	
+	/* Driver program to test the above functions */
+	public static void main(String args[]) 
+	{ 
+		int sum = 21; 
+		
+		/* Constructed binary tree is 
+			10 
+			/ \ 
+		8	 2 
+		/ \ / 
+		3 5 2 
+		*/
+		TreeDemo20 tree = new TreeDemo20(); 
+		tree.root = new Node20(10); 
+		tree.root.left = new Node20(8); 
+		tree.root.right = new Node20(2); 
+		tree.root.left.left = new Node20(3); 
+		tree.root.left.right = new Node20(5); 
+		tree.root.right.left = new Node20(2); 
+
+		if (tree.hasPathSum(tree.root, sum)) 
+			System.out.println("There is a root to leaf path with sum " + sum); 
+		else
+			System.out.println("There is no root to leaf path with sum " + sum); 
+	} 
+} 
+
+//This code has been contributed by Mayank Jaiswal(mayank_24) 
